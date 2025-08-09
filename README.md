@@ -1,9 +1,3 @@
-# Blender-geometry-node-time.
-Optimize the display of total time spent on geometric nodes(优化几何节点总耗时显示方式).
-
-### 节点树太长时在组输入节点上找总耗时不方便，优化显示。
-### 下载 几何节点耗时.py 安装
-![image](https://github.com/yunkezengren/Blender-geometry-node-time./assets/98995559/4e27c517-7ed7-441e-b3c6-388e2112eb41)
-
-#### 发现了奇怪的事情，放着不管了.
-![image](https://github.com/yunkezengren/Blender-geometry-node-time./assets/98995559/7f34af28-f58b-468a-9de5-e9bb75cc9dfa)
+The main goal of this add-on is to make it easy to check execution time in the node editor. Otherwise, you would have to pan through your node tree all the way to the Group Output.
+This information, similar to what’s shown on the Group Output, will instead be displayed consistently in the upper-left corner of the node editor.
+<img width="959" height="735" alt="image" src="https://github.com/user-attachments/assets/1308a73d-c672-45da-ad07-2c125a0ee3d2" />
