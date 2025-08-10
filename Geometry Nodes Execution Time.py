@@ -104,20 +104,21 @@ def update_draw_handler():
     while handler_time:
         bpy.types.SpaceNodeEditor.draw_handler_remove(handler_time.pop(), 'WINDOW')
 
-    if bpy.context.scene and bpy.context.scene.show_gn_execution_time:
+    scene = getattr(bpy.context, "scene", None)
+    if scene and getattr(scene, "show_gn_execution_time", False):
         handler_time.append(
             bpy.types.SpaceNodeEditor.draw_handler_add(draw_time_in_interface, (), 'WINDOW', 'POST_PIXEL')
         )
-    for area in bpy.context.screen.areas:
+
+    for area in getattr(bpy.context, "screen", []).areas if getattr(bpy.context, "screen", None) else []:
         if area.type == 'NODE_EDITOR':
             area.tag_redraw()
 
-# Register functions
 def register():
     register_properties()
     bpy.types.NODE_PT_overlay.append(add_to_node_pt_overlay_show_time)
     bpy.app.handlers.load_post.append(load_post_handler_draw)
-    update_draw_handler()
+    # don't call update_draw_handler() directly here
 
 def unregister():
     bpy.types.NODE_PT_overlay.remove(add_to_node_pt_overlay_show_time)
